@@ -32,3 +32,9 @@ uiBuilder.SetStartAnimations (this, Resource.Animation.slide_in_right, Resource.
 uiBuilder.SetExitAnimations (this, Resource.Animation.slide_in_left, Resource.Animation.slide_out_right);
 ```
 See the sample for more information about adding menu and action bar items.
+
+## NuGet
+
+There is a package available on NuGet: http://www.nuget.org/packages/Xamarin.Android.ChromeCustomTabs
+
+There will be a component in the Xamarin Component Store soon with Samples and documentation!
