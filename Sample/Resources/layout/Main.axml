@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical">
+    <EditText
+        android:id="@+id/edit"
+        android:padding="5dp"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please type the url here."
+        android:text="http://www.xamarin.com" />
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="5dp" />
+    <Button
+        android:id="@+id/warmup_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:textAllCaps="false"
+        android:text="Warmup Chrome" />
+    <Button
+        android:id="@+id/may_launch_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:textAllCaps="false"
+        android:text="May Launch URL" />
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:textAllCaps="false"
+        android:text="Launch URL in custom Chrome tab" />
+</LinearLayout>
