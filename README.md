@@ -7,7 +7,7 @@ This is currently only available in Chrome for Android version 44 and higher, wh
 ![Chrome Custom Tabs in Xamarin.Android](ChromeCustomTabs.png)
 
 ## Setup
-Once you've installed the *Chrome Dev* app, you need to navigate to `chrome://flags` and enable **Enable Hosted Mode**, and restart your browser.
+Once you've installed the [*Chrome Dev*](https://play.google.com/store/apps/details?id=com.chrome.dev) app, you need to navigate to [chrome://flags](chrome://flags) and enable **Enable Hosted Mode**, and restart your browser.
 
 ## Loading a Page
 You can load pages without any customization very easily:
