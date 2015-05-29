@@ -14,8 +14,19 @@ namespace Xamarin.Android.CustomChromeTabs
         const string EXTRA_HOSTED_SESSION_ID = "hosted:session_id";
         const string EXTRA_HOSTED_KEEP_ALIVE = "hosted:keep_alive";
 
-        public Activity Context {
+        public Context Context {
             get ; private set;
+        }
+
+
+        static HostedActivityManager instance;
+        public static HostedActivityManager GetInstance (Context context)
+        {
+            if (instance == null) {
+                instance = new HostedActivityManager (context);
+            }
+
+            return instance;
         }
 
         List<Action> serviceActions;
@@ -29,15 +40,18 @@ namespace Xamarin.Android.CustomChromeTabs
         bool bindHasBeenCalled;
         BrowserConnectionCallback browserConnectionCallback;
         long sessionId;
+        global::Android.OS.Handler mainLooper;
 
         public delegate void UserNavigationDelegate (long sessionId, string url, global::Android.OS.Bundle extras);
         public event UserNavigationDelegate UserNavigation;
 
-        public HostedActivityManager (Activity context) 
+        public HostedActivityManager (Context context) 
         {
             Context = context;
             serviceActions = new List<Action> ();
             sessionId = -1;
+            mainLooper = new global::Android.OS.Handler (global::Android.OS.Looper.MainLooper);
+
             connection = new HostedServiceConnection {
                 OnServiceConnectedHandler = (name, service) => {
                     if (browserConnectionCallback == null) {
@@ -63,12 +77,15 @@ namespace Xamarin.Android.CustomChromeTabs
                     }
                     serviceConnected = true;
                     foreach (var a in serviceActions) {
-                        Context.RunOnUiThread (a);
+                        mainLooper.Post (a);
                     }
                     serviceActions.Clear ();                  
                 },
                 OnServiceDisconnectedHandler = (name) => {
-
+                    serviceConnected = false;
+                
+                    if (shouldRebind) 
+                        BindService ();
                 }
             };
         }
@@ -157,9 +174,9 @@ namespace Xamarin.Android.CustomChromeTabs
         }
 
         void enqueueAction (Action action)
-        {            
-            if (serviceConnected)                
-                Context.RunOnUiThread (action);
+        {       
+            if (serviceConnected)
+                mainLooper.Post (action);
             else
                 serviceActions.Add (action);           
         }

@@ -12,20 +12,12 @@ namespace Xamarin.Android.CustomChromeTabs
 
         public UserNavigationDelegate Handler { get; set; }
 
-        #region IBrowserConnectionCallback implementation
         public override void OnUserNavigation (long sessionId, string url, global::Android.OS.Bundle extras)
         {
             var h = Handler;
             if (h != null)
                 h (sessionId, url, extras);
         }
-        #endregion
-//        #region IInterface implementation
-//        public global::Android.OS.IBinder AsBinder ()
-//        {
-//            return  this.AsBinder ();
-//        }
-//        #endregion
     }
 
 }

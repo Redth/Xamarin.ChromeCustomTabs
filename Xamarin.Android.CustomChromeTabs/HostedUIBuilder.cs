@@ -8,11 +8,20 @@ namespace Xamarin.Android.CustomChromeTabs
 {
     public class HostedUIBuilder
     {
-        const string EXTRA_HOSTED_MODE = "com.android.chrome.append_task";
+        //TODO: Change to true once chrome 45 is out
+        const bool CHROME_45 = false;
+
+        // Chrome 44
+        const string EXTRA_HOSTED_MODE_OLD = "com.android.chrome.append_task";
+
+        // Chrome 45
+        const string EXTRA_HOSTED_MODE = "com.android.chrome.hosted_mode";
+
         const string EXTRA_HOSTED_EXIT_ANIMATION_BUNDLE = "hosted:exit_animation_bundle";
         const string EXTRA_HOSTED_TOOLBAR_COLOR = "hosted:toolbar_color";
         const string EXTRA_HOSTED_MENU_ITEMS = "hosted:menu_items";
         const string EXTRA_HOSTED_ACTION_BUTTON_BUNDLE = "hosted:action_button_bundle";
+        const string CATEGORY_CUSTOM_TABS = "android.intent.category.CUSTOM_TABS";
         const string KEY_HOSTED_ICON = "hosted:icon";
         const string KEY_HOSTED_MENU_TITLE = "hosted:menu_title";
         const string KEY_HOSTED_PENDING_INTENT = "hosted:pending_intent";
@@ -26,7 +35,12 @@ namespace Xamarin.Android.CustomChromeTabs
             intent = new Intent();
             startBundle = null;
             menuItems = new List<global::Android.OS.Bundle> ();
-            intent.PutExtra (EXTRA_HOSTED_MODE, true);
+            if (CHROME_45) {
+                intent.AddCategory (CATEGORY_CUSTOM_TABS); 
+                intent.PutExtra (EXTRA_HOSTED_MODE, true);
+            } else {
+                intent.PutExtra (EXTRA_HOSTED_MODE_OLD, true);
+            }
             intent.SetPackage (HostedActivityManager.CHROME_PACKAGE);
             intent.SetAction (Intent.ActionView);
         }
