@@ -68,12 +68,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\Xamarin.Android.CustomChromeTabs\Xamarin.Android.CustomChromeTabs.csproj">
-      <Project>{E075D4C7-70D2-421B-8DB4-1D9FFDDDD90B}</Project>
-      <Name>Xamarin.Android.CustomChromeTabs</Name>
-    </ProjectReference>
+    <Folder Include="Resources\anim\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\anim\" />
+    <ProjectReference Include="..\Xamarin.Android.ChromeCustomTabs\Xamarin.Android.ChromeCustomTabs.csproj">
+      <Project>{E075D4C7-70D2-421B-8DB4-1D9FFDDDD90B}</Project>
+      <Name>Xamarin.Android.ChromeCustomTabs</Name>
+    </ProjectReference>
   </ItemGroup>
 </Project>
