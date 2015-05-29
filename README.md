@@ -4,6 +4,8 @@ Google just announced the ability to use the Chrome browser's tabs within your o
 
 This is currently only available in Chrome for Android version 44 and higher, which as of the time of this document is available as the *Chrome Dev* app on the Play Store.
 
+![Chrome Custom Tabs in Xamarin.Android](ChromeCustomTabs.png)
+
 ## Setup
 Once you've installed the *Chrome Dev* app, you need to navigate to `chrome://flags` and enable **Enable Hosted Mode**, and restart your browser.
 
