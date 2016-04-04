@@ -1,3 +1,7 @@
+## NOTE: This code is now deprecated since Android Support Library now includes Custom Tabs.  You can find the Xamarin bindings and samples in the component: https://components.xamarin.com/view/xamandroidsupportcustomtabs
+
+----
+
 # Xamarin.ChromeCustomTabs
 
 Google just announced the ability to use the Chrome browser's tabs within your own app at Google I/O 2015.
